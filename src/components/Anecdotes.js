@@ -2,8 +2,9 @@ import React from 'react';
 import Anecdote from './Anecdote';
 
 const createAnecdotes = (props) => {
+    const anecdotes = props.store.getState();
     return (
-        props.anecdotes.map(anecdote =>
+        anecdotes.map(anecdote =>
             <Anecdote 
                 key={anecdote.id}
                 store={props.store}
