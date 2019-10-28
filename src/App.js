@@ -1,5 +1,6 @@
 import React from 'react';
 import Anecdotes from './components/Anecdotes';
+import AnecdoteAdding from './components/AnecdoteAdding';
 
 const App = (props) => {
   const anecdotes = props.store.getState()
@@ -12,10 +13,9 @@ const App = (props) => {
         anecdotes={anecdotes}  
       />
       <h2>create new</h2>
-      <form>
-        <div><input /></div>
-        <button>create</button>
-      </form>
+      <AnecdoteAdding
+        store={props.store}
+      />
     </div>
   )
 }

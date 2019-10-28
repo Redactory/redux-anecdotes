@@ -35,7 +35,13 @@ const reducer = (state = initialState, action) => {
           }
         }
         return state;
-
+      case 'ADD':
+        const newState = [...state];
+        const newAnecdote = asObject(action.content);
+        newState.push(newAnecdote);
+        
+        return newState;
+        
       default: return state;
   }
 }
