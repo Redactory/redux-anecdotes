@@ -17,6 +17,12 @@ const asObject = (anecdote) => {
   }
 }
 
+const sortAnecdotes = (state) => {
+  state.sort((a, b) => {
+    return b.votes - a.votes;
+  });
+}
+
 const initialState = anecdotesAtStart.map(asObject)
 
 const reducer = (state = initialState, action) => {
@@ -30,6 +36,8 @@ const reducer = (state = initialState, action) => {
             const newState = [...state];
             const votedAnecdote = newState[i];
             votedAnecdote.votes = votedAnecdote.votes + 1;
+
+            sortAnecdotes(newState);
 
             return newState;
           }
