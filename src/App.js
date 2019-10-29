@@ -1,6 +1,6 @@
 import React from 'react';
 import Anecdotes from './components/Anecdotes';
-import AnecdoteAdding from './components/AnecdoteAdding';
+import AnecdoteForm from './components/AnecdoteForm';
 
 const App = (props) => {
   return (
@@ -9,8 +9,7 @@ const App = (props) => {
       <Anecdotes 
         store={props.store}
       />
-      <h2>create new</h2>
-      <AnecdoteAdding
+      <AnecdoteForm
         store={props.store}
       />
     </div>

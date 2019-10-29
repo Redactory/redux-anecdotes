@@ -16,12 +16,15 @@ const updateInputState = (event, setInput) => {
 const AnecdoteAdding = (props) => {
   const [input, setInput] = useState('');
   return (
-    <form onSubmit={(event) => addAnecdote(event, input, props.store)}>
-      <div>
-        <input value={input} onChange={(event) => updateInputState(event, setInput)}/>
-      </div>
-      <button type='submit' value={input}>create</button>
-    </form>
+    <div>
+      <h2>create new</h2>
+      <form onSubmit={(event) => addAnecdote(event, input, props.store)}>
+        <div>
+          <input value={input} onChange={(event) => updateInputState(event, setInput)}/>
+        </div>
+        <button type='submit' value={input}>create</button>
+      </form>
+    </div>
   )
 }
 
