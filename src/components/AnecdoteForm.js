@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { anecdoteCreation } from '../reducers/anecdoteReducer';
+import { notificationCreation, emptyNotificationCreation } from '../reducers/notificationReducer';
 
 const addAnecdote = (event, input, store) => {
   event.preventDefault();
 
   const action = anecdoteCreation(input);
+  const presentation = notificationCreation(input);
+  const empty = emptyNotificationCreation();
 
   store.dispatch(action);
+  store.dispatch(presentation);
+  setTimeout(() => store.dispatch(empty), 5000);
 };
 
 const updateInputState = (event, setInput) => {

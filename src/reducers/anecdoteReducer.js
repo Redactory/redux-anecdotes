@@ -57,13 +57,15 @@ export const anecdoteReducer = (state = initialState, action) => {
 export const anecdoteCreation = (input) => {
   return {
     type: 'ADD',
-    content: input
+    content: input,
+    notification: 'PRESENT'
   };
 };
 
 export const incrementVoteTally = (anecdoteId) => {
   return {
       type: 'INCREMENT',
-      id: anecdoteId
+      id: anecdoteId,
+      notification: 'PRESENT'
   };
 };
