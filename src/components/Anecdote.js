@@ -1,10 +1,8 @@
 import React from 'react';
+import { incrementVoteTally } from '../reducers/anecdoteReducer';
 
 const vote = (anecdote, store) => {
-    const increment = {
-        type: 'INCREMENT',
-        id: anecdote.id
-    };
+    const increment = incrementVoteTally(anecdote.id);
 
     store.dispatch(increment);
 };

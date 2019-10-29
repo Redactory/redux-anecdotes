@@ -25,7 +25,7 @@ const sortAnecdotes = (state) => {
 
 const initialState = anecdotesAtStart.map(asObject)
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
   console.log('state now: ', state)
   console.log('action', action)
   
@@ -54,4 +54,16 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
+export const anecdoteCreation = (input) => {
+  return {
+    type: 'ADD',
+    content: input
+  };
+};
+
+export const incrementVoteTally = (anecdoteId) => {
+  return {
+      type: 'INCREMENT',
+      id: anecdoteId
+  };
+};

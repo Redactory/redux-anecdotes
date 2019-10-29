@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
+import { anecdoteCreation } from '../reducers/anecdoteReducer';
 
 const addAnecdote = (event, input, store) => {
   event.preventDefault();
 
-  const action = {
-    type: 'ADD',
-    content: input
-  };
+  const action = anecdoteCreation(input);
 
   store.dispatch(action);
-}
+};
 
 const updateInputState = (event, setInput) => {
   setInput(event.target.value);
