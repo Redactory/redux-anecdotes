@@ -2,7 +2,7 @@ import React from 'react';
 import Anecdote from './Anecdote';
 
 const createAnecdotes = (props) => {
-    const anecdotes = props.store.getState();
+    const anecdotes = props.store.getState().anecdote;
     return (
         anecdotes.map(anecdote =>
             <Anecdote 
