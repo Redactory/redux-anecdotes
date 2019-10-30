@@ -1,11 +1,11 @@
 import React from 'react';
 import { updateSearchString } from '../reducers/filterReducer';
+import { connect } from 'react-redux';
 
 const Filter = (props) => {
     const handleChange = (event) => {      
       const searchString = event.target.value;
-      const searchAction = updateSearchString(searchString);
-      props.store.dispatch(searchAction);
+      props.updateSearchString(searchString);
     };
 
     const style = {
@@ -19,4 +19,9 @@ const Filter = (props) => {
     );
   };
   
-  export default Filter;
+  const mapDispatchToProps = {
+    updateSearchString
+  };
+
+  const connectedFilter = connect(null, mapDispatchToProps)(Filter);
+  export default connectedFilter;

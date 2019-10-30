@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 const AnecdoteList = (props) => {
     const anecdotes = props.anecdote;
     const filterString = props.filter.toLowerCase();
+    
     return (
         anecdotes.map(anecdote => {
             if (anecdote.content.toLowerCase().includes(filterString)) {

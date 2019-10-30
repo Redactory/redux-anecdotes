@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { anecdoteCreation } from '../reducers/anecdoteReducer';
 import { notificationCreation, emptyNotificationCreation } from '../reducers/notificationReducer';
+import { connect } from 'react-redux';
 
-const addAnecdote = (event, input, store) => {
+const addAnecdote = (event, input, props) => {
   event.preventDefault();
-
-  const action = anecdoteCreation(input);
-  const presentation = notificationCreation(input);
-  const empty = emptyNotificationCreation();
-
-  store.dispatch(action);
-  store.dispatch(presentation);
-  setTimeout(() => store.dispatch(empty), 5000);
+  
+  props.anecdoteCreation(input);
+  props.notificationCreation(input);
+  setTimeout(() => props.emptyNotificationCreation(), 5000);
 };
 
 const updateInputState = (event, setInput) => {
@@ -23,7 +20,7 @@ const AnecdoteForm = (props) => {
   return (
     <div>
       <h2>create new</h2>
-      <form onSubmit={(event) => addAnecdote(event, input, props.store)}>
+      <form onSubmit={(event) => addAnecdote(event, input, props)}>
         <div>
           <input value={input} onChange={(event) => updateInputState(event, setInput)}/>
         </div>
@@ -33,4 +30,11 @@ const AnecdoteForm = (props) => {
   )
 }
 
-export default AnecdoteForm;
+const mapDispatchToProps = {
+  anecdoteCreation,
+  notificationCreation,
+  emptyNotificationCreation
+}
+
+const connectAnecdoteForm = connect(null, mapDispatchToProps)(AnecdoteForm);
+export default connectAnecdoteForm;

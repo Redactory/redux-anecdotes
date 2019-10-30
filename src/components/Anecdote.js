@@ -1,15 +1,14 @@
 import React from 'react';
 import { incrementVoteTally } from '../reducers/anecdoteReducer';
 import { notificationCreation, emptyNotificationCreation } from '../reducers/notificationReducer';
+import { connect } from 'react-redux';
 
-const vote = (anecdote, store) => {
-    const increment = incrementVoteTally(anecdote.id);
-    const presentation = notificationCreation(anecdote.content);
-    const empty = emptyNotificationCreation();
+const vote = (props) => {
+    const anecdote = props.anecdote;
 
-    store.dispatch(increment);
-    store.dispatch(presentation);
-    setTimeout(() => store.dispatch(empty), 5000);
+    props.incrementVoteTally(anecdote.id);
+    props.notificationCreation(anecdote.content);
+    setTimeout(() => props.emptyNotificationCreation(), 5000);
 };
 
  const Anecdote = (props) => {
@@ -20,10 +19,17 @@ const vote = (anecdote, store) => {
             </div>
             <div>
                 has {props.anecdote.votes}
-                <button onClick={() => vote(props.anecdote, props.store)}>vote</button>
+                <button onClick={() => vote(props)}>vote</button>
             </div>
         </div>
     )
 }
 
-export default Anecdote;
+const mapDispatchToProps = {
+    incrementVoteTally,
+    notificationCreation,
+    emptyNotificationCreation
+}
+
+const connectAnecdote = connect(null, mapDispatchToProps)(Anecdote);
+export default connectAnecdote;
