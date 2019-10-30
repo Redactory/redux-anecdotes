@@ -1,7 +1,7 @@
 import React from 'react';
 import Anecdote from './Anecdote';
 
-const createAnecdotes = (props) => {
+const AnecdoteList = (props) => {
     const anecdotes = props.store.getState().anecdote;
     const filterString = props.store.getState().filter.toLowerCase();
     return (
@@ -19,10 +19,4 @@ const createAnecdotes = (props) => {
     );
 }
 
-const Anecdotes = (props) => {
-    return (
-        createAnecdotes(props)
-    );
-}
-
-export default Anecdotes;
+export default AnecdoteList;

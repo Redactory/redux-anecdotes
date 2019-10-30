@@ -18,7 +18,7 @@ const updateInputState = (event, setInput) => {
   setInput(event.target.value);
 }
 
-const AnecdoteAdding = (props) => {
+const AnecdoteForm = (props) => {
   const [input, setInput] = useState('');
   return (
     <div>
@@ -33,4 +33,4 @@ const AnecdoteAdding = (props) => {
   )
 }
 
-export default AnecdoteAdding;
+export default AnecdoteForm;
