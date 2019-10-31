@@ -25,7 +25,7 @@ const sortAnecdotes = (state) => {
 
 const initialState = anecdotesAtStart.map(asObject)
 
-export const anecdoteReducer = (state = initialState, action) => {
+export const anecdoteReducer = (state = [], action) => {
   console.log('state now: ', state)
   console.log('action', action)
   
@@ -49,6 +49,9 @@ export const anecdoteReducer = (state = initialState, action) => {
         newState.push(newAnecdote);
         
         return newState;
+
+      case 'INIT_ANECDOTES':
+        return action.content;
         
       default: return state;
   }
@@ -69,3 +72,10 @@ export const incrementVoteTally = (anecdoteId) => {
       notification: 'PRESENT'
   };
 };
+
+export const initAnecdotes = (anecdotes) => {
+  return {
+    type: 'INIT_ANECDOTES',
+    content: anecdotes
+  }
+}
