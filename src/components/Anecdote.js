@@ -11,14 +11,14 @@ const vote = (props) => {
     setTimeout(() => props.emptyNotificationCreation(), 5000);
 };
 
- const Anecdote = (props) => {
+const Anecdote = (props) => {
     return (
         <div key={props.anecdote.id}>
             <div>
                 {props.anecdote.content}
             </div>
             <div>
-                has {props.anecdote.votes}
+                has {props.votes}
                 <button onClick={() => vote(props)}>vote</button>
             </div>
         </div>

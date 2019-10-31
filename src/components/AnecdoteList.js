@@ -11,8 +11,8 @@ const AnecdoteList = (props) => {
             if (anecdote.content.toLowerCase().includes(filterString)) {
                 return <Anecdote 
                     key={anecdote.id}
-                    store={props.store}
                     anecdote={anecdote}
+                    votes={anecdote.votes}
                 />
             }
 
