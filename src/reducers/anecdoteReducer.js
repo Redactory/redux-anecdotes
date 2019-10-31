@@ -45,6 +45,7 @@ export const anecdoteReducer = (state = [], action) => {
         return state;
       case 'ADD':
         const newState = [...state];
+
         const newAnecdote = asObject(action.content);
         newState.push(newAnecdote);
         
