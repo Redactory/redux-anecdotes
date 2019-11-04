@@ -50,11 +50,24 @@ export const anecdoteReducer = (state = [], action) => {
 }
 
 export const anecdoteCreation = (input) => {
-  return {
-    type: 'ADD',
-    content: input,
-    notification: 'PRESENT'
-  };
+  return async dispatch => {
+    const max = 1000000000;
+    const id = Math.floor(Math.random() * max) + '';
+  
+    const anecdote = {
+      content: input,
+      id: id,
+      votes: 0
+    };
+    
+    anecdoteService.addAnecdote(anecdote);
+    
+    dispatch ({
+      type: 'ADD',
+      content: input,
+      notification: 'PRESENT'
+    });
+  }
 };
 
 export const incrementVoteTally = (anecdoteId) => {
