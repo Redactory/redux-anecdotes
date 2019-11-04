@@ -12,7 +12,14 @@ const addAnecdote = async (anecdote) => {
     return response.data;
 }
 
+const voteAnecdote = async (anecdote) => {
+    const id = anecdote.id;
+    const response = axios.put(`${baseUrl}/${id}`, anecdote);
+    return response.data;
+}
+
 export default {
     getAll,
-    addAnecdote
+    addAnecdote,
+    voteAnecdote
 };

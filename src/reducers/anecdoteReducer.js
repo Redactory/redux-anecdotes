@@ -61,7 +61,6 @@ export const anecdoteCreation = (input) => {
     };
     
     anecdoteService.addAnecdote(anecdote);
-    
     dispatch ({
       type: 'ADD',
       content: input,
@@ -70,12 +69,18 @@ export const anecdoteCreation = (input) => {
   }
 };
 
-export const incrementVoteTally = (anecdoteId) => {
-  return {
+export const incrementVoteTally = (anecdote) => {
+  return async dispatch => {
+    const votes = anecdote.votes + 1;
+    const updatedAnecdote = {...anecdote, votes};
+    anecdoteService.voteAnecdote(updatedAnecdote);
+    
+    dispatch({
       type: 'INCREMENT',
-      id: anecdoteId,
+      id: anecdote.id,
       notification: 'PRESENT'
-  };
+    });
+  }
 };
 
 export const initAnecdotes = () => {

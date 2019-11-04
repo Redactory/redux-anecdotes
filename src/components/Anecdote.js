@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 const vote = (props) => {
     const anecdote = props.anecdote;
 
-    props.incrementVoteTally(anecdote.id);
+    props.incrementVoteTally(anecdote);
     props.notificationCreation(anecdote.content);
     setTimeout(() => props.emptyNotificationCreation(), 5000);
 };
