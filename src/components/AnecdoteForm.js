@@ -3,7 +3,6 @@ import { anecdoteCreation } from '../reducers/anecdoteReducer';
 import { notificationCreation, emptyNotificationCreation } from '../reducers/notificationReducer';
 import { connect } from 'react-redux';
 import anecdoteService from '../services/anecdotes';
-import anecdotes from '../services/anecdotes';
 
 const addAnecdote = (event, input, props) => {
   event.preventDefault();
