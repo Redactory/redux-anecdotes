@@ -1,14 +1,13 @@
 import React from 'react';
 import { incrementVoteTally } from '../reducers/anecdoteReducer';
-import { notificationCreation, emptyNotificationCreation } from '../reducers/notificationReducer';
+import { setNotification } from '../reducers/notificationReducer';
 import { connect } from 'react-redux';
 
 const vote = (props) => {
     const anecdote = props.anecdote;
 
     props.incrementVoteTally(anecdote);
-    props.notificationCreation(anecdote.content);
-    setTimeout(() => props.emptyNotificationCreation(), 5000);
+    props.setNotification(anecdote.content, 5000);
 };
 
 const Anecdote = (props) => {
@@ -27,8 +26,7 @@ const Anecdote = (props) => {
 
 const mapDispatchToProps = {
     incrementVoteTally,
-    notificationCreation,
-    emptyNotificationCreation
+    setNotification
 }
 
 const connectAnecdote = connect(null, mapDispatchToProps)(Anecdote);

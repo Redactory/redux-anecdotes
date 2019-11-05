@@ -1,3 +1,5 @@
+import { async } from "q";
+
 const initialState = '';
 
 export const notificationReducer = (state = initialState, action) => {
@@ -27,5 +29,21 @@ export const emptyNotificationCreation = () => {
     return {
         type: 'EMPTY',
         content: ''
+    }
+}
+
+export const setNotification = (message, duration) => {
+    return async dispatch => {
+        dispatch ({
+            type: 'NOTIFY',
+            content: message
+        });
+
+        setTimeout(() => {
+            dispatch({
+                type: 'EMPTY',
+                content: ''
+            })
+        }, duration);
     }
 }

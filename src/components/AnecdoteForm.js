@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { anecdoteCreation } from '../reducers/anecdoteReducer';
-import { notificationCreation, emptyNotificationCreation } from '../reducers/notificationReducer';
+import { setNotification } from '../reducers/notificationReducer';
 import { connect } from 'react-redux';
 
 const addAnecdote = (event, input, props) => {
   event.preventDefault();
 
   props.anecdoteCreation(input);
-  props.notificationCreation(input);
-  setTimeout(() => props.emptyNotificationCreation(), 5000);
+  props.setNotification(input, 5000);
 };
 
 const updateInputState = (event, setInput) => {
@@ -32,8 +31,7 @@ const AnecdoteForm = (props) => {
 
 const mapDispatchToProps = {
   anecdoteCreation,
-  notificationCreation,
-  emptyNotificationCreation
+  setNotification
 }
 
 const mapStateToProps = (state) => {
